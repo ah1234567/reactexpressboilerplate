@@ -1,27 +1,39 @@
 import React, {Component} from 'react';
 
-class Students extends Component{
-
-    constructor(){
-        super();
-        this.state = {
-            students: [],
-
-        }
+class Students extends Component {
+  constructor(){
+    super();
+    this.state = {
+      students: []
     }
+  }
 
-    async componentDidMount(){
-        const res = await fetch('/api/students');
-        const data = await res.json();
-        this.setState({
-          students: data,
-        })
-      }
+  async componentDidMount() {
+    const res = await fetch('/api/students');
+    const data = await res.json();
+    this.setState({
+      students: data
+    })
+  }
 
-      render(){
-          return <div>{this.state.students}</div>;
-        }
-
+render(){
+  const {students} = this.state
+  if(students.length){
+  return (
+    <ul>
+    {students.map(el => {
+      return(
+        <li key={el.id}>{el.firstName}</li>
+      )
+    })}
+    </ul>
+  )
+  }else {
+    return(
+      <div>Loading...</div>
+    )
+  }
+}
 }
 
 export default Students;

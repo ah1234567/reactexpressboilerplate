@@ -11,8 +11,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "eject": "react-scripts eject",
+
+    
+    "server": "nodemon server.js",
+    "client": "npm start",
+    "dev": "concurrently\"npm run server\" \"npm run clent\""
+    
+
+
+  }
+  
+  ,
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -28,9 +38,5 @@
       "last 1 safari version"
     ]
   },
- "proxy":  "http://localhost:4000"
+  "proxy": "http://localhost:4000"
 }
-
-
-
-
